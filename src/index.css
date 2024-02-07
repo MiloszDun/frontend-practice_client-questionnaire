@@ -1,0 +1,107 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+#observatory-form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+#observatory-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#observatory-form input,
+#observatory-form select,
+#observatory-form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#observatory-form .features-checkbox-group label {
+  display: inline-block;
+}
+
+#observatory-form .checkbox-input {
+  width: 50px;
+  height: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+#observatory-form button {
+  width: auto;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background-color: #0056b3;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#observatory-form button:hover {
+  background-color: #003d82;
+}
+
+.fieldset {
+  margin-bottom: 20px;
+}
+
+.features-checkbox-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.features-checkbox-group div {
+  margin-bottom: 10px;
+}
+
+#submission-list {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+#submission-list h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.submission-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.submission-item:last-of-type {
+  border-bottom: none;
+}
+
+.submission-item > div {
+  margin-bottom: 5px;
+}
+
+.submission-logo {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 10px 0 20px;
+}
