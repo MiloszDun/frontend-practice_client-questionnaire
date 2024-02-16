@@ -1,4 +1,4 @@
-export const NumberInput = ({text, onChange, value}) => {
+const NumberInput = ({text, onChange, value}) => {
   const handleChange = (e) => {
     onChange(e.target.value);
   };
@@ -10,3 +10,5 @@ export const NumberInput = ({text, onChange, value}) => {
     </>
   )
 }
+
+export default NumberInput;

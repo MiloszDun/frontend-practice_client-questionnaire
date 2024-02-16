@@ -1,4 +1,4 @@
-export const SelectionInput = ({text, options, onChange, value}) => {
+const SelectionInput = ({text, options, onChange, value}) => {
   const handleChange = (e) => {
     onChange(e.target.value);
   };
@@ -17,3 +17,5 @@ export const SelectionInput = ({text, options, onChange, value}) => {
     </>
   )
 }
+
+export default SelectionInput;

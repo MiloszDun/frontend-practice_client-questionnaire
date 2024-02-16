@@ -1,4 +1,4 @@
-export const ImageInput = ({text, onChange, value}) => {
+const ImageInput = ({text, onChange, value}) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -18,3 +18,5 @@ export const ImageInput = ({text, onChange, value}) => {
     </>
   )
 }
+
+export default ImageInput;
