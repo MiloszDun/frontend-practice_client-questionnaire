@@ -1,0 +1,33 @@
+#submission-list {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+#submission-list h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.submission-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.submission-item:last-of-type {
+  border-bottom: none;
+}
+
+.submission-item > div {
+  margin-bottom: 5px;
+}
+
+.submission-logo {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 10px 0 20px;
+}

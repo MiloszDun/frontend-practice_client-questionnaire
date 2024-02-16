@@ -1,7 +1,8 @@
 import { useContext, useState } from "react"
-import { SubmissionsContext } from "../data/SubmissionContext"
+import { SubmissionsContext } from "../../data/SubmissionContext"
+import './SubmissionList.css'
 
-export const SubmissionsList = () => {
+const SubmissionsList = () => {
   const { submissions } = useContext(SubmissionsContext);
 
   return (
@@ -20,3 +21,5 @@ export const SubmissionsList = () => {
     </div>
   )
 }
+
+export default SubmissionsList;

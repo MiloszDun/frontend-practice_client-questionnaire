@@ -1,13 +1,14 @@
 import { useContext, useState } from "react"
-import { SubmissionsContext } from "../data/SubmissionContext"
-import { TextInput } from "./TextInput"
-import { SelectionInput } from "./SelectionInput"
-import { NumberInput } from "./NumberInput"
-import { ImageInput } from "./ImageInput"
-import { CheckboxInput } from "./CheckboxInput"
-import { Button } from "./Button"
+import { SubmissionsContext } from "../../data/SubmissionContext"
+import TextInput from '../TextInput'
+import SelectionInput from "../SelectionInput"
+import NumberInput from "../NumberInput"
+import ImageInput from "../ImageInput"
+import CheckboxInput from "../CheckboxInput"
+import Button from "../Button"
+import './Form.css';
 
-export const Form = ({children}) => {
+const Form = ({children}) => {
 
   const sizeOptions = [
     {id: 1, value: 'Small'},
@@ -71,7 +72,7 @@ export const Form = ({children}) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} id="observatory-form">
+    <form onSubmit={handleSubmit} className="observatory-form">
       <TextInput text='Telescope Name' onChange={handleNameChange} value={name} />
       <SelectionInput text='Size' options={sizeOptions} onChange={handleTelescopeSizeChange} value={telescopeSize}/>
       <NumberInput text='Budget' onChange={handleBudgetChange} value={budget}/>
@@ -81,3 +82,5 @@ export const Form = ({children}) => {
     </form>
   )
 }
+
+export default Form;

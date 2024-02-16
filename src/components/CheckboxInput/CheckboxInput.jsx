@@ -1,4 +1,6 @@
-export const CheckboxInput = ({text, options, onChange, value}) => {
+import './CheckboxInput.css';
+
+const CheckboxInput = ({text, options, onChange, value}) => {
   const handleChange = (e) => {
     onChange(e.target.value, e.target.checked);
   };
@@ -19,7 +21,7 @@ export const CheckboxInput = ({text, options, onChange, value}) => {
                 onChange={handleChange}
                 className="checkbox-input"
               />
-              <label htmlFor={option.id}>{option.value}</label>
+              <label className="checkbox-label" htmlFor={option.id}>{option.value}</label>
             </div>
           )
         )}
@@ -28,3 +30,5 @@ export const CheckboxInput = ({text, options, onChange, value}) => {
   </>
   )
 }
+
+export default CheckboxInput;
