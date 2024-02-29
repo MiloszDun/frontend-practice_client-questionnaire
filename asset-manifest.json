@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/MiloszDun/practice-client-questionnaire/static/css/main.ec0aee16.css",
-    "main.js": "/MiloszDun/practice-client-questionnaire/static/js/main.d5cf5277.js",
-    "index.html": "/MiloszDun/practice-client-questionnaire/index.html",
-    "main.ec0aee16.css.map": "/MiloszDun/practice-client-questionnaire/static/css/main.ec0aee16.css.map",
-    "main.d5cf5277.js.map": "/MiloszDun/practice-client-questionnaire/static/js/main.d5cf5277.js.map"
+    "main.css": "/practice-client-questionnaire/static/css/main.ec0aee16.css",
+    "main.js": "/practice-client-questionnaire/static/js/main.d5cf5277.js",
+    "index.html": "/practice-client-questionnaire/index.html",
+    "main.ec0aee16.css.map": "/practice-client-questionnaire/static/css/main.ec0aee16.css.map",
+    "main.d5cf5277.js.map": "/practice-client-questionnaire/static/js/main.d5cf5277.js.map"
   },
   "entrypoints": [
     "static/css/main.ec0aee16.css",
