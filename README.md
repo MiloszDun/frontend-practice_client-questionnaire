@@ -1,5 +1,5 @@
 ## What is it
-Live app: https://MiloszDun.github.io/
+Live app: https://MiloszDun.github.io/practice-client-questionnaire
 
 A simple questionnaire a client might fill when applying for a project – in this case, building a space telescope.
 
