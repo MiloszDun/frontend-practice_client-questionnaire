@@ -1,12 +1,6 @@
 import { useContext, useState } from "react"
 import { SubmissionsContext } from "../../data/SubmissionContext"
-import TextInput from '../TextInput'
-import SelectionInput from "../SelectionInput"
-import NumberInput from "../NumberInput"
-import ImageInput from "../ImageInput"
-import CheckboxInput from "../CheckboxInput"
-import Button from "../Button"
-import './Form.css';
+import { TextField, Select, MenuItem, InputLabel, FormControl, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, Typography, Grid, Box, Paper } from '@mui/material';
 
 const Form = ({children}) => {
 
@@ -44,16 +38,24 @@ const Form = ({children}) => {
     setBudget(value);
   };
 
-  const handleLogoChange = (value) => {
-    setLogo(value);
+  const handleLogoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setLogo(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
-  const handleFeatureChange = (value, checked) => {
+  const handleFeatureChange = (optionValue) => (event) => {
     setFeatures(prevFeatures => {
-      if (checked) {
-        return [...prevFeatures, value];
+      const isFeatureSelected = event.target.checked;
+      if (isFeatureSelected) {
+        return [...prevFeatures, optionValue];
       } else {
-        return prevFeatures.filter(feature => feature !== value);
+        return prevFeatures.filter(feature => feature !== optionValue);
       }
     });
   };
@@ -72,14 +74,102 @@ const Form = ({children}) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="observatory-form">
-      <TextInput text='Telescope Name' onChange={handleNameChange} value={name} />
-      <SelectionInput text='Size' options={sizeOptions} onChange={handleTelescopeSizeChange} value={telescopeSize}/>
-      <NumberInput text='Budget' onChange={handleBudgetChange} value={budget}/>
-      <ImageInput text='Company logo (JPG or PNG)' onChange={handleLogoChange} value={logo}/>
-      <CheckboxInput text='Select Features' options={featuresOptions} onChange={handleFeatureChange} value={features}/>
-      <Button text='Submit' />
-    </form>
+    <Paper sx={{ p: 2, borderRadius: 2 }}>
+      <form onSubmit={handleSubmit} className="observatory-form">
+        <Typography variant="h4" gutterBottom>
+          Enter your data
+        </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+          <TextField 
+            label="Telescope Name" 
+            variant="outlined" 
+            fullWidth 
+            value={name} 
+            onChange={(e) => handleNameChange(e.target.value)} 
+            required 
+          />
+          </Grid>
+
+          <Grid item xs={12}>
+            <FormControl fullWidth required sx={{ marginBottom: 2 }}>
+              <InputLabel id="telescope-size-label">Size</InputLabel>
+              <Select
+                labelId="telescope-size-label"
+                id="telescope-size"
+                value={telescopeSize}
+                label="Size"
+                onChange={(e) => handleTelescopeSizeChange(e.target.value)}
+                name="telescope-size"
+              >
+                <MenuItem value="">
+                  <em>--Please choose an option--</em>
+                </MenuItem>
+                {sizeOptions.map((option) => (
+                  <MenuItem key={option.id} value={option.value}>{option.value}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              label="Budget"
+              type="number"
+              variant="outlined"
+              fullWidth
+              value={budget}
+              onChange={(e) => handleBudgetChange(e.target.value)}
+              required
+              sx={{ marginBottom: 2 }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <input
+              accept="image/png, image/jpeg"
+              style={{ display: 'none' }}
+              id="company-logo"
+              type="file"
+              onChange={handleLogoChange}
+            />
+            <label htmlFor="company-logo">
+              <Button variant="outlined" component="span">
+                Upload company logo (JPG or PNG)
+              </Button>
+            </label>
+            {logo && (
+              <Box sx={{ marginY: 2 }}>
+                <img src={logo} alt="Company logo" style={{ height: '100px' }} />
+              </Box>
+            )}
+          </Grid>
+
+          <Grid item xs={12}>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Select Features</FormLabel>
+              <FormGroup>
+                {featuresOptions.map((option) => (
+                  <FormControlLabel
+                    key={option.id}
+                    control={
+                      <Checkbox
+                        checked={features.includes(option.value)}
+                        onChange={handleFeatureChange(option.value)}
+                        name={option.value}
+                      />}
+                    label={option.value}
+                  />
+                ))}
+              </FormGroup>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <Button type="submit" variant="contained">Submit</Button>
+          </Grid>
+        </Grid>
+      </form>
+    </Paper>
   )
 }
 

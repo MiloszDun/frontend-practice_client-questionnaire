@@ -1,24 +1,44 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { SubmissionsContext } from "../../data/SubmissionContext"
-import './SubmissionList.css'
+import { Grid, Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
 
 const SubmissionsList = () => {
   const { submissions } = useContext(SubmissionsContext);
 
   return (
-    <div id="submission-list">
-      <h2>Past Submissions</h2>
-      {submissions.map((submission) => {
-        return (
-          <div key={submission.id} className="submission-item">
-            <img src={submission.logo} alt="Company Logo" className="submission-logo" />
-            <div className="submission-name"><span style={{fontWeight: 'bold'}}>Telescope name:</span> {submission.name}</div>
-            <div className="submission-telescope"><span style={{fontWeight: 'bold'}}>Size:</span> {submission.telescopeSize}</div>
-            <div className="submission-budget"><span style={{fontWeight: 'bold'}}>Budget:</span> {submission.budget}</div>
-            <div className="submission-features"><span style={{fontWeight: 'bold'}}>Features:</span> {submission.features.join(', ')}</div>
-          </div>
-        )})}
-    </div>
+    <Box sx={{ flexGrow: 1, padding: 2 }}>
+      <Typography variant="h4" gutterBottom>
+        Past Submissions
+      </Typography>
+      <Grid container spacing={2}>
+        {submissions.map((submission) => (
+          <Grid item xs={12} sm={6} md={4} key={submission.id}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardMedia
+                component="img"
+                height="140"
+                image={submission.logo || "default_logo_path.jpg"} // Consider providing a default image path
+                alt="Company Logo"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {submission.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Size:</strong> {submission.telescopeSize}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Budget:</strong> {submission.budget}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Features:</strong> {submission.features.join(', ')}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   )
 }
 
